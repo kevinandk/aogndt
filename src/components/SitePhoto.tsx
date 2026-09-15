@@ -1,0 +1,33 @@
+import Image from "next/image";
+
+export function SitePhoto({
+  src,
+  alt,
+  credit,
+  className = "",
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  credit?: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className={`relative overflow-hidden bg-navy-900 ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        className="object-cover"
+        sizes="(min-width: 1024px) 50vw, 100vw"
+      />
+      {credit && (
+        <figcaption className="absolute inset-x-0 bottom-0 bg-navy-950/75 px-3 py-1.5 font-mono text-[0.62rem] tracking-wide text-paper/80">
+          {credit}
+        </figcaption>
+      )}
+    </figure>
+  );
+}

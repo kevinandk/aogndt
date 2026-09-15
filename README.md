@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AOGNDT
 
-## Getting Started
+Public front door for **Level 3 NDT** (FAA Repair Station N5DR176O) and affiliate supplier **QC NDT**. Local Next.js draft — domain and hosting come later.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path | Purpose |
+| --- | --- |
+| `/` | AOG hero, three paths, methods, quote form |
+| `/aog` | Field dispatch and what to have ready |
+| `/inspections` | ET / UT / MT / PT / VT plus published airframe work |
+| `/training` | Classroom courses (no stale fees) |
+| `/supplies` | QC NDT equipment, rentals, consumables |
+| `/about` | Combined shop story |
+| `/contact` | Dual phones + quote form (`?need=aog\|inspection\|training\|supplies`) |
 
-## Learn More
+## Quote form
 
-To learn more about Next.js, take a look at the following resources:
+The quote form posts to `/api/quote` and stays on the page (no mailto). Submissions are written to `.data/quotes.json` locally. Set `FORM_ENDPOINT` (Formspree or similar) when the domain is live so the shop inbox gets a copy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Need still selects the target inbox:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- AOG / inspection → `info@aircraftndt.com`
+- Training → `info@level3ndt.com`
+- Supplies → `sales@qcndt.net`
 
-## Deploy on Vercel
+## Later: domain
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Point DNS at the host (Vercel, Netlify, Cloudflare Pages, or static `output: "export"`).
+2. Flip `site.url` in `src/lib/site.ts` if the live hostname is not `aogndt.com`.
+3. Wire the form endpoint and add SSL.
+4. Optionally 301 the old brochure sites.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `CONFIRM_HOURS.md` before claiming 24/7 coverage.
