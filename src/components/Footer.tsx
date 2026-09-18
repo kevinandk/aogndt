@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5">
-            <LogoMark className="h-8 w-8 text-amber-500" />
+            <LogoMark className="h-9 w-9 text-[15px]" />
             <p className="font-display text-xl font-semibold tracking-[0.16em]">AOGNDT</p>
           </div>
           <p className="mt-4 max-w-md text-sm leading-6 text-steel">
