@@ -30,7 +30,7 @@ export default function Home() {
             Aircraft on Ground · Non-Destructive Testing
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight tracking-normal uppercase sm:mt-4 sm:text-5xl sm:tracking-wide lg:text-6xl">
-            Get the aircraft off the ground.
+            Your AOG is our priority.
           </h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-steel sm:mt-6 sm:text-lg sm:leading-8">
             Every hour it sits is a missed trip. Level 3 NDT brings field-ready

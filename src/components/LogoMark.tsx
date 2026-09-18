@@ -1,5 +1,5 @@
-// Modeled on a 4x4 AOG handling label: fluorescent orange field, black rule,
-// condensed caps. Size and letter size both come from className.
+// Modeled on a 4x4 AOG handling label: solid field, black rule, condensed
+// caps. Size and letter size both come from className.
 export function LogoMark({
   className = "h-8 w-8 text-[13px]",
 }: {
@@ -8,7 +8,7 @@ export function LogoMark({
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex shrink-0 items-center justify-center bg-aog-500 p-[2px] ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center bg-amber-500 p-[2px] ${className}`}
     >
       <span className="flex h-full w-full items-center justify-center border-2 border-navy-950">
         <span className="font-display font-bold leading-none tracking-[0.02em] text-navy-950 uppercase">
