@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePhoto } from "@/components/SitePhoto";
-import { borescopeEngines, site, trainingCourses } from "@/lib/site";
+import { borescopeEngines, formatAirportsProse, site, trainingCourses } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "NDT training",
@@ -16,7 +16,7 @@ export default function TrainingPage() {
       <PageHero
         eyebrow="Training"
         title="Training for the NDT professional"
-        lede={`${site.marketingName} has taught basic and advanced NDT since ${site.foundedLevel3}. Classroom sessions in the Bay Area — minutes from SFO, SJC, and OAK — or on-site at your facility. Digital presentations, study material, and shop equipment for practical work.`}
+        lede={`${site.marketingName} has taught basic and advanced NDT since ${site.foundedLevel3}. Classroom sessions in the Bay Area — minutes from ${formatAirportsProse()} — or on-site at your facility. Digital presentations, study material, and shop equipment for practical work.`}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">

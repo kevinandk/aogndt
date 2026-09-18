@@ -6,12 +6,15 @@ export function SitePhoto({
   credit,
   className = "",
   priority = false,
+  focus = "object-center",
 }: {
   src: string;
   alt: string;
   credit?: string;
   className?: string;
   priority?: boolean;
+  /** Tailwind object-position class, for photos that crop badly when centered. */
+  focus?: string;
 }) {
   return (
     <figure className={`relative overflow-hidden bg-navy-900 ${className}`}>
@@ -20,7 +23,7 @@ export function SitePhoto({
         alt={alt}
         fill
         priority={priority}
-        className="object-cover"
+        className={`object-cover ${focus}`}
         sizes="(min-width: 1024px) 50vw, 100vw"
       />
       {credit && (

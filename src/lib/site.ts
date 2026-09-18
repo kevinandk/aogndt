@@ -17,6 +17,8 @@ export const site = {
     note: "2.7 miles from Hayward Executive (HWD)",
   },
   airports: ["SFO", "SJC", "OAK", "HWD"],
+  /** Coverage beyond the four local fields — matches published worldwide field service. */
+  airportsAndMore: "And More",
   aog: {
     label: "Call for AOG / field dispatch",
     phone: "877-9AOG-NDT",
@@ -103,6 +105,44 @@ export const airframesInspected = [
   "Rolls-Royce BR700",
   "Transport-category, corporate, and private aircraft",
   "Aircraft wheels",
+] as const;
+
+/**
+ * In-flight photos of the airframe families we inspect. Freely licensed
+ * Wikimedia Commons files; the aircraft shown are examples of the type, not
+ * Level 3 NDT customers. Full attribution in PHOTO-SOURCES.md.
+ */
+export const fleetPhotos = [
+  {
+    type: "Cessna Citation",
+    photo: "/photos/fleet-citation.jpg",
+    alt: "Cessna CitationJet CJ3 airborne against a deep blue sky",
+    credit: "CitationJet CJ3 · Markus Eigenheer, CC BY-SA 2.0",
+  },
+  {
+    type: "Learjet",
+    photo: "/photos/fleet-learjet.jpg",
+    alt: "Learjet 45 climbing after takeoff",
+    credit: "Learjet 45 · Tomás Del Coro, CC BY-SA 2.0",
+  },
+  {
+    type: "Dassault Falcon",
+    photo: "/photos/fleet-falcon.jpg",
+    alt: "Dassault Falcon 7X in flight, seen from below",
+    credit: "Falcon 7X · Alan Wilson, CC BY-SA 2.0",
+  },
+  {
+    type: "King Air",
+    photo: "/photos/fleet-kingair.jpg",
+    alt: "Beechcraft Super King Air 200 in flight",
+    credit: "Super King Air 200 · Tomás Del Coro, CC BY-SA 2.0",
+  },
+  {
+    type: "Cessna Caravan",
+    photo: "/photos/fleet-caravan.jpg",
+    alt: "Cessna Grand Caravan 208B in flight below broken cloud",
+    credit: "Grand Caravan 208B · MauroTongco II, CC BY-SA 4.0",
+  },
 ] as const;
 
 /** Names QC NDT lists on its public catalog — text only, no logos. */
@@ -247,4 +287,18 @@ export function inboxForNeed(need: QuoteNeed): string {
 export function formatAddress(): string {
   const { line1, city, state, zip } = site.address;
   return `${line1}, ${city}, ${state} ${zip}`;
+}
+
+/** Navy-strip line: SFO · SJC · OAK · HWD · And More */
+export function formatAirports(): string {
+  return [...site.airports, site.airportsAndMore].join(" · ");
+}
+
+/** Prose for shop proximity: SFO, SJC, OAK, and HWD */
+export function formatAirportsProse(): string {
+  const codes = [...site.airports];
+  const last = codes.pop();
+  if (!last) return "";
+  if (codes.length === 0) return last;
+  return `${codes.join(", ")}, and ${last}`;
 }

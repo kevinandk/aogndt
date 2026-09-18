@@ -56,3 +56,82 @@ body {
     rgb(245 166 35 / 0.16) 22px
   );
 }
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sweep-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(245 166 35 / 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 0.9rem rgb(245 166 35 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(245 166 35 / 0);
+  }
+}
+
+.reveal-armed {
+  opacity: 0;
+}
+
+.reveal-shown {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-in {
+  animation: rise-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sweep-in {
+  animation: sweep-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Two slow pulses on the AOG button, then it sits still. */
+.aog-pulse {
+  animation: pulse-ring 2.4s ease-out 1.2s 2;
+}
+
+.photo-zoom img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-zoom:hover img {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-armed,
+  .reveal-shown,
+  .hero-in,
+  .sweep-in,
+  .aog-pulse,
+  .photo-zoom img,
+  .photo-zoom:hover img {
+    animation: none;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+}

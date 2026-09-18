@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePhoto } from "@/components/SitePhoto";
-import { site } from "@/lib/site";
+import { formatAirportsProse, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "AOG / field dispatch",
@@ -89,7 +89,7 @@ export default function AogPage() {
             </p>
             <p className="mt-3 leading-7 text-steel">
               We come to the aircraft so you are not waiting on a ferry. Hayward
-              shop, minutes from SFO, SJC, and OAK. Their published language is
+              shop, minutes from {formatAirportsProse()}. Their published language is
               prompt worldwide field service — not a guaranteed hour count, and
               not a 24/7 desk until hours are confirmed.
             </p>
