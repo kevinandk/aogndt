@@ -4,7 +4,7 @@ The public site does **not** say 24/7, after-hours, or guaranteed response times
 
 Published facts used instead:
 
-- Phone `(650) 654-3601` labeled **Call for AOG / field dispatch**
+- Phone `877-9AOG-NDT` labeled **Call for AOG / field dispatch**
 - Training-site hours on level3ndt.com: Monday–Friday, 8am–5pm
 - QC NDT contact page hours: Monday–Friday, 9:30am–2:30pm (confirm — may be outdated)
 

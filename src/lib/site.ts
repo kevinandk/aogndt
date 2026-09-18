@@ -19,13 +19,13 @@ export const site = {
   airports: ["SFO", "SJC", "OAK", "HWD"],
   aog: {
     label: "Call for AOG / field dispatch",
-    phone: "(650) 654-3601",
-    phoneHref: "tel:+16506543601",
+    phone: "877-9AOG-NDT",
+    phoneHref: "tel:+18779264638",
     email: "info@aircraftndt.com",
   },
   level3: {
-    phone: "(650) 654-3601",
-    phoneHref: "tel:+16506543601",
+    phone: "877-9AOG-NDT",
+    phoneHref: "tel:+18779264638",
     fax: "(650) 574-9198",
     inspectionEmail: "info@aircraftndt.com",
     trainingEmail: "info@level3ndt.com",
