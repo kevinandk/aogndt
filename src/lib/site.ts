@@ -20,6 +20,7 @@ export const site = {
   aog: {
     label: "Call for AOG / field dispatch",
     phone: "877-9AOG-NDT",
+    phoneDigits: "(877) 926-4638",
     phoneHref: "tel:+18779264638",
     email: "info@aircraftndt.com",
   },

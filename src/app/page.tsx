@@ -44,6 +44,9 @@ export default function Home() {
               className="bg-amber-500 px-5 py-3.5 text-center font-display text-lg font-semibold tracking-[0.08em] text-navy-950 uppercase hover:bg-amber-400"
             >
               Call {site.aog.phone}
+              <span className="mt-0.5 block font-mono text-sm font-normal tracking-[0.08em] text-navy-950/70">
+                {site.aog.phoneDigits}
+              </span>
             </a>
             <p className="text-sm text-steel">
               Not AOG?{" "}
