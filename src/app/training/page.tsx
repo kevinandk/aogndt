@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePhoto } from "@/components/SitePhoto";
 import { borescopeEngines, formatAirportsProse, site, trainingCourses } from "@/lib/site";
@@ -75,17 +74,17 @@ export default function TrainingPage() {
           Enroll
         </h2>
         <p className="mt-4 max-w-2xl leading-7 text-navy-800/85">
-          Email {site.level3.trainingEmail} or use the quote form. Business hours
-          published on the training site are Monday–Friday, 8am–5pm. For
-          equipment used in class, {site.qcndt.name} is the affiliate supplier.
+          Email {site.level3.trainingEmail}. Business hours published on the
+          training site are Monday–Friday, 8am–5pm. For equipment used in class,{" "}
+          {site.qcndt.name} is the affiliate supplier.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact?need=training"
-            className="bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase hover:bg-amber-400"
+          <a
+            href={`mailto:${site.level3.trainingEmail}`}
+            className="bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
           >
-            Request training
-          </Link>
+            Email training
+          </a>
           <a
             href={site.level3.existingSites[1].href}
             className="border border-navy-800/20 px-5 py-3 text-center font-display tracking-[0.1em] uppercase hover:border-amber-500"

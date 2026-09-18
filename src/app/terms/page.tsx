@@ -18,8 +18,8 @@ export default function TermsPage() {
       <section className="mx-auto max-w-3xl space-y-5 px-4 py-16 text-sm leading-7 text-navy-800 sm:px-6">
         <p>
           AOGNDT describes services performed by {site.legalName} (FAA Repair
-          Station {site.faaStation}) and {site.qcndt.legalName}. A quote request
-          or phone call is an inquiry, not an accepted work order.
+          Station {site.faaStation}) and {site.qcndt.legalName}. A phone call or
+          email is an inquiry, not an accepted work order.
         </p>
         <p>
           Inspection, training, and supply work is governed by the applicable

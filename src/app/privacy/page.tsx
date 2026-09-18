@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "AOGNDT privacy stub. How quote requests and call logs are treated.",
+  description: "AOGNDT privacy stub. How calls and emails are treated.",
 };
 
 export default function PrivacyPage() {
@@ -17,11 +17,9 @@ export default function PrivacyPage() {
       />
       <section className="mx-auto max-w-3xl space-y-5 px-4 py-16 text-sm leading-7 text-navy-800 sm:px-6">
         <p>
-          Quote forms collect name, organization, phone, email, aircraft or
-          location, and the notes you type. Until a form endpoint is configured,
-          that data is assembled into an email you send from your own client to{" "}
-          {site.level3.inspectionEmail}, {site.level3.trainingEmail}, or{" "}
-          {site.qcndt.email}.
+          This site publishes phone numbers and email addresses. If you call or
+          write {site.level3.inspectionEmail}, {site.level3.trainingEmail}, or{" "}
+          {site.qcndt.email}, those businesses receive what you send.
         </p>
         <p>
           We use that information to schedule inspections, training, or supply

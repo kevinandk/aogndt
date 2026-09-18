@@ -1,12 +1,14 @@
 import Link from "next/link";
+import { CoverageSection } from "@/components/CoverageMap";
 import { FaaCertificate } from "@/components/FaaCertificate";
-import { QuoteForm } from "@/components/QuoteForm";
 import { Reveal } from "@/components/Reveal";
 import { SitePhoto } from "@/components/SitePhoto";
 import {
+  aogEmailHref,
+  aogReady,
   airframesInspected,
   companiesHelped,
-  daveArms,
+  falconLine,
   fleetPhotos,
   formatAddress,
   formatAirports,
@@ -34,30 +36,32 @@ export default function Home() {
             Aircraft on Ground · Non-Destructive Testing
           </p>
           <h1 className="hero-in mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight tracking-normal uppercase [animation-delay:120ms] sm:mt-4 sm:text-5xl sm:tracking-wide lg:text-6xl">
-            Your AOG is our priority.
+            Get the aircraft off the ground.
           </h1>
           <p className="hero-in mt-4 max-w-xl text-base leading-7 text-steel [animation-delay:240ms] sm:mt-6 sm:text-lg sm:leading-8">
-            Every hour it sits is a missed trip. Level 3 NDT brings field-ready
-            NDT to the ramp so you can inspect, document, and move. FAA Repair
-            Station {site.faaStation}. Published prompt worldwide field service
-            since {site.foundedLevel3}.
+            {site.aog.who} Level 3 NDT brings field-ready NDT to the ramp so you
+            can inspect, document, and move. FAA Repair Station {site.faaStation}.
+            Field dispatch from the Bay Area since {site.foundedLevel3}.
           </p>
-          <div className="hero-in mt-6 flex flex-col gap-3 [animation-delay:360ms] sm:mt-8 sm:flex-row sm:items-center">
+          <div className="hero-in mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-stretch">
             <a
               href={site.aog.phoneHref}
-              className="aog-pulse bg-amber-500 px-5 py-3.5 text-center font-display text-lg font-semibold tracking-[0.08em] text-navy-950 uppercase transition-colors hover:bg-amber-400"
+              className="aog-pulse inline-block bg-amber-500 px-5 py-3.5 text-center font-display text-lg font-semibold tracking-[0.08em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
             >
               Call {site.aog.phone}
               <span className="mt-0.5 block font-mono text-sm font-normal tracking-[0.08em] text-navy-950/70">
                 {site.aog.phoneDigits}
               </span>
             </a>
-            <p className="text-sm text-steel">
-              Not AOG?{" "}
-              <Link href="#quote" className="text-amber-400 underline-offset-2 hover:underline">
-                Request a quote
-              </Link>
-            </p>
+            <a
+              href={aogEmailHref()}
+              className="inline-block border border-paper/30 px-5 py-3.5 text-center font-display text-lg font-semibold tracking-[0.08em] uppercase hover:border-amber-400 hover:text-amber-400"
+            >
+              Email dispatch
+              <span className="mt-0.5 block font-mono text-sm font-normal tracking-[0.08em] text-paper/70">
+                {site.aog.email}
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -73,46 +77,20 @@ export default function Home() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <p className="font-mono text-xs tracking-[0.22em] text-navy-700 uppercase">
-            Not AOG?
-          </p>
-          <h2 className="mt-2 font-display text-3xl font-semibold tracking-wide uppercase">
-            Class or equipment
+          <h2 className="font-display text-3xl font-semibold tracking-wide uppercase">
+            Have this ready
           </h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <Link
-              href="/training"
-              className="group border border-navy-800/15 p-6 transition-all hover:-translate-y-0.5 hover:border-amber-500 hover:shadow-lg hover:shadow-navy-950/10"
-            >
-              <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">
-                Train
-              </p>
-              <h3 className="mt-2 font-display text-2xl tracking-wide uppercase">
-                Level 1–3 classroom
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-navy-800/80">
-                Method courses and engine-specific borescope training at Hayward
-                or on-site.
-              </p>
-            </Link>
-            <Link
-              href="/supplies"
-              className="group border border-navy-800/15 p-6 transition-all hover:-translate-y-0.5 hover:border-amber-500 hover:shadow-lg hover:shadow-navy-950/10"
-            >
-              <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">
-                Equip
-              </p>
-              <h3 className="mt-2 font-display text-2xl tracking-wide uppercase">
-                QC NDT supplies
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-navy-800/80">
-                Instruments, rentals, and consumables from the affiliate counter
-                next door.
-              </p>
-            </Link>
-          </div>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {aogReady.map((item) => (
+              <li key={item} className="border-l-2 border-amber-500 pl-4 text-navy-900">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      <CoverageSection />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Reveal>
@@ -125,6 +103,12 @@ export default function Home() {
           <p className="mt-3 max-w-2xl text-sm text-navy-700">
             Published on aircraftndt.com. Authorizations, not testimonials.
           </p>
+          <div className="mt-6 border-l-2 border-amber-500 bg-paper-dark/50 px-4 py-4">
+            <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">
+              Dassault Falcon
+            </p>
+            <p className="mt-2 text-sm leading-6 text-navy-900">{falconLine}</p>
+          </div>
         </Reveal>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -214,7 +198,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <p className="font-mono text-xs tracking-[0.22em] text-navy-700 uppercase">
             Time on the ground
@@ -225,77 +209,70 @@ export default function Home() {
           <p className="mt-4 leading-7 text-navy-800/85">
             The job is the clock: get the inspection done so the aircraft can
             leave. We come to the ramp, hangar, or shop — {formatAddress()},
-            minutes from {formatAirportsProse()} — instead of waiting on a ferry. Their
-            published line is prompt worldwide field service, not a guaranteed
-            hour count.
-          </p>
-          <p className="mt-4 text-sm text-navy-700">
-            After-hours coverage is not listed until those hours are confirmed.
-            Call for AOG / field dispatch.
+            minutes from {formatAirportsProse()} — instead of waiting on a ferry.
+            Every U.S. airport. {site.aog.who}
           </p>
         </Reveal>
         <Reveal delay={120}>
+          {/* Portrait frame: the source is 3:4, so this keeps the inspector
+              and the flaw-detector screen both in shot. */}
           <SitePhoto
             src="/photos/field-inspection.jpg"
-            alt="Level 3 NDT technician running a portable flaw detector on aircraft structure in a hangar"
+            alt="Level 3 NDT technician reading a portable flaw detector on aircraft structure in a hangar"
             credit="Level 3 NDT technician on a field inspection"
-            className="photo-zoom h-full min-h-[26rem]"
-            focus="object-[50%_22%]"
+            className="photo-zoom mx-auto aspect-[3/4] w-full max-w-sm lg:mr-0 lg:ml-auto"
           />
         </Reveal>
       </section>
 
       <section className="bg-paper-dark">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <SitePhoto
-              src={daveArms.photo}
-              alt={`${daveArms.name}, ${daveArms.role}`}
-              credit="Dave Arms at a QC NDT seminar · qcndt.net"
-              className="h-52 w-full sm:h-44 sm:w-36 sm:shrink-0"
-            />
-            <div>
-              <p className="font-mono text-xs tracking-[0.18em] text-navy-700 uppercase">
-                Who answers
-              </p>
-              <h2 className="mt-2 font-display text-2xl tracking-wide uppercase">
-                {daveArms.name}
-              </h2>
-              <p className="mt-1 text-sm font-medium text-navy-900">{daveArms.role}</p>
-              <p className="mt-3 text-sm leading-6 text-navy-800/85">
-                NDT since {daveArms.startedNdt}. {daveArms.certs}. {daveArms.extras}{" "}
-                Also {daveArms.also}.
-              </p>
-              <a
-                href={daveArms.source.href}
-                className="mt-3 inline-block text-xs text-navy-900 underline-offset-2 hover:underline"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Verify: {daveArms.source.label}
-              </a>
-            </div>
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="max-w-xl">
+            <FaaCertificate />
           </div>
-          <FaaCertificate />
         </div>
       </section>
 
-      <section id="quote" className="border-t border-navy-800/15 bg-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div>
-            <p className="font-mono text-xs tracking-[0.22em] text-navy-700 uppercase">
-              Non-emergency
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-semibold tracking-wide uppercase">
-              Request a quote
-            </h2>
-            <p className="mt-4 leading-7 text-navy-800/85">
-              Aircraft on the ground? Call first. For scheduled inspections,
-              classes, or equipment, send the form. It stays on this page and
-              routes to the inspections, training, or QC NDT inbox.
-            </p>
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <p className="font-mono text-xs tracking-[0.22em] text-navy-700 uppercase">
+            Not AOG?
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-semibold tracking-wide uppercase">
+            Class or equipment
+          </h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <Link
+              href="/training"
+              className="group border border-navy-800/15 p-6 transition-all hover:-translate-y-0.5 hover:border-amber-500 hover:shadow-lg hover:shadow-navy-950/10"
+            >
+              <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">
+                Train
+              </p>
+              <h3 className="mt-2 font-display text-2xl tracking-wide uppercase">
+                Level 1–3 classroom
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-navy-800/80">
+                Method courses and engine-specific borescope training at Hayward
+                or on-site.
+              </p>
+            </Link>
+            <Link
+              href="/supplies"
+              className="group border border-navy-800/15 p-6 transition-all hover:-translate-y-0.5 hover:border-amber-500 hover:shadow-lg hover:shadow-navy-950/10"
+            >
+              <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">
+                Equip
+              </p>
+              <h3 className="mt-2 font-display text-2xl tracking-wide uppercase">
+                QC NDT supplies
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-navy-800/80">
+                Instruments, rentals, and consumables from the affiliate counter
+                next door.
+              </p>
+            </Link>
           </div>
-          <QuoteForm />
         </div>
       </section>
     </>

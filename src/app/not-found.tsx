@@ -14,7 +14,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="mt-8 inline-block bg-amber-500 px-5 py-3 font-display font-semibold tracking-[0.12em] text-navy-950 uppercase hover:bg-amber-400"
+        className="mt-8 inline-block bg-amber-500 px-5 py-3 font-display font-semibold tracking-[0.12em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
       >
         Back to AOGNDT
       </Link>

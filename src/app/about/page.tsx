@@ -26,8 +26,9 @@ export default function AboutPage() {
             <SitePhoto
               src={daveArms.photo}
               alt={`${daveArms.name}, ${daveArms.role}`}
-              credit="Dave Arms · qcndt.net seminar, 2014"
+              credit="qcndt.net, 2014"
               className="h-56 w-full sm:h-48 sm:w-36 sm:shrink-0"
+              focus="object-[30%_42%]"
             />
             <div>
               <p className="font-mono text-xs tracking-[0.18em] text-amber-500 uppercase">

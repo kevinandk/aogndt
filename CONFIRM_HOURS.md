@@ -1,17 +1,9 @@
-# Confirm before claiming 24/7
+# AOG hours — decided 2026-09-18
 
-The public site does **not** say 24/7, after-hours, or guaranteed response times.
+Public claim: **24/7 AOG** on `877-9AOG-NDT`. A dispatcher answers.
 
-Published facts used instead:
+Amber bar label is `24/7 AOG`.
 
-- Phone `877-9AOG-NDT` labeled **Call for AOG / field dispatch**
-- Training-site hours on level3ndt.com: Monday–Friday, 8am–5pm
-- QC NDT contact page hours: Monday–Friday, 9:30am–2:30pm (confirm — may be outdated)
+AOG email fallback is `AOGNDT@proton.me`. Planned mailbox `dispatch@aogndt.com` is in `site.aog.emailNext` only — do not print it until that address is live.
 
-Before launch, decide:
-
-1. Is there a true after-hours AOG number?
-2. Who answers nights, weekends, and holidays?
-3. Should the amber bar stay “Call for AOG / field dispatch” or become “24/7 AOG”?
-
-Do not change the copy to 24/7 until those three are written down and agreed.
+Do not invent response-time guarantees (same-day, hour counts). 24/7 means the dispatcher line is staffed, not a promised ETA.

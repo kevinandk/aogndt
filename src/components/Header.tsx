@@ -47,12 +47,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              className="bg-amber-500 px-3.5 py-2 font-display text-[0.9rem] font-semibold tracking-[0.12em] text-navy-950 uppercase hover:bg-amber-400"
-            >
-              Request a quote
-            </Link>
           </nav>
 
           <button
@@ -84,15 +78,6 @@ export function Header() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  className="mt-2 block bg-amber-500 px-3 py-3 text-center font-display font-semibold tracking-[0.12em] text-navy-950 uppercase"
-                >
-                  Request a quote
-                </Link>
-              </li>
             </ul>
           </nav>
         )}

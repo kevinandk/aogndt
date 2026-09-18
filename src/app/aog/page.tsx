@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { CoverageSection } from "@/components/CoverageMap";
 import { PageHero } from "@/components/PageHero";
-import { SitePhoto } from "@/components/SitePhoto";
-import { formatAirportsProse, site } from "@/lib/site";
+import { aogEmailHref, aogReady, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "AOG / field dispatch",
   description:
-    "Call Level 3 NDT for aircraft-on-ground and field NDT dispatch from the San Francisco Bay Area.",
+    "24/7 AOG NDT dispatch. Call 877-9AOG-NDT — a dispatcher answers. Email AOGNDT@proton.me if the line is busy.",
 };
 
 const steps = [
@@ -28,31 +27,46 @@ const steps = [
   },
 ] as const;
 
-const ready = [
-  "Aircraft type and tail number",
-  "Airport, hangar, or shop location",
-  "AMM / AD / SB reference if you have it",
-  "Method requested, or a description of the finding",
-  "Access, power, and who will meet the inspector",
-] as const;
-
 export default function AogPage() {
   return (
     <>
       <PageHero
         eyebrow="AOG / field"
         title="The aircraft is down. Call first."
-        lede="The clock is the job: get the inspection done so the aircraft can leave. AOGNDT routes that call to Level 3 NDT — FAA Repair Station N5DR176O. Field-ready Bay Area dispatch with published prompt worldwide field service since 1996."
+        lede={`${site.aog.who} AOGNDT routes that call to Level 3 NDT — FAA Repair Station ${site.faaStation}. Field-ready Bay Area dispatch since ${site.foundedLevel3}. Every U.S. airport.`}
       >
-        <a
-          href={site.aog.phoneHref}
-          className="inline-block bg-amber-500 px-5 py-3 font-display text-lg font-semibold tracking-[0.08em] text-navy-950 uppercase hover:bg-amber-400"
-        >
-          {site.aog.phone}
-        </a>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={site.aog.phoneHref}
+            className="bg-amber-500 px-5 py-3 text-center font-display text-lg font-semibold tracking-[0.08em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
+          >
+            Call {site.aog.phone}
+          </a>
+          <a
+            href={aogEmailHref()}
+            className="border border-paper/30 px-5 py-3 text-center font-display text-lg tracking-[0.08em] uppercase hover:border-amber-400 hover:text-amber-400"
+          >
+            Email {site.aog.email}
+          </a>
+        </div>
       </PageHero>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <h2 className="font-display text-3xl font-semibold tracking-wide uppercase">
+            Have this ready
+          </h2>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {aogReady.map((item) => (
+              <li key={item} className="border-l-2 border-amber-500 pl-4 text-navy-900">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <h2 className="font-display text-3xl font-semibold tracking-wide uppercase">
           How a call usually goes
         </h2>
@@ -69,43 +83,24 @@ export default function AogPage() {
         </div>
       </section>
 
+      <CoverageSection />
+
       <section className="bg-navy-950 text-paper">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl font-semibold tracking-wide uppercase">
-              Have this ready
-            </h2>
-            <ul className="mt-6 space-y-3 text-steel">
-              {ready.map((item) => (
-                <li key={item} className="border-l-2 border-amber-500 pl-4">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="border border-white/10 p-6">
-            <p className="font-mono text-xs tracking-[0.18em] text-amber-400 uppercase">
-              Time off the ground
-            </p>
-            <p className="mt-3 leading-7 text-steel">
-              We come to the aircraft so you are not waiting on a ferry. Hayward
-              shop, minutes from {formatAirportsProse()}. Their published language is
-              prompt worldwide field service — not a guaranteed hour count, and
-              not a 24/7 desk until hours are confirmed.
-            </p>
-            <SitePhoto
-              src="/photos/ndi-cracks.jpg"
-              alt="Nondestructive inspection looking for cracks on aircraft structure"
-              credit="Method illustration · U.S. Air Force / Wikimedia (public domain)"
-              className="mt-6 min-h-52"
-            />
-            <Link
-              href="/contact?need=aog"
-              className="mt-6 inline-block font-display tracking-[0.12em] text-amber-400 uppercase hover:text-amber-300"
-            >
-              Prefer a written request →
-            </Link>
-          </div>
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <h2 className="font-display text-3xl font-semibold tracking-wide uppercase">
+            Save this number
+          </h2>
+          <p className="mt-3 max-w-xl text-steel">
+            Add AOGNDT to the phone you will hand a technician. {site.aog.phone}{" "}
+            · {site.aog.email}.
+          </p>
+          <a
+            href={site.aog.vcard}
+            download
+            className="mt-6 inline-block bg-amber-500 px-5 py-3 font-display font-semibold tracking-[0.08em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
+          >
+            Download vCard
+          </a>
         </div>
       </section>
     </>

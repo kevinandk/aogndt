@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/LogoMark";
-import { formatAddress, nav, site } from "@/lib/site";
+import { aogEmailHref, formatAddress, nav, site } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -38,10 +38,18 @@ export function Footer() {
           <p className="font-display tracking-[0.16em] text-amber-400 uppercase">Call</p>
           <ul className="mt-3 space-y-3 text-sm">
             <li>
-              <p className="text-steel">AOG / Level 3 NDT</p>
+              <p className="text-steel">24/7 AOG</p>
               <a href={site.aog.phoneHref} className="text-paper hover:text-amber-400">
                 {site.aog.phone}
               </a>
+              <p className="mt-1">
+                <a
+                  href={aogEmailHref()}
+                  className="text-paper hover:text-amber-400"
+                >
+                  {site.aog.email}
+                </a>
+              </p>
             </li>
             <li>
               <p className="text-steel">QC NDT supplies</p>

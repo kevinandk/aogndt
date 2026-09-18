@@ -15,29 +15,27 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Path | Purpose |
 | --- | --- |
-| `/` | AOG hero, three paths, methods, quote form |
-| `/aog` | Field dispatch and what to have ready |
+| `/` | 24/7 AOG hero, checklist, coverage map, fleet, methods, cert |
+| `/aog` | Call / email dispatch, checklist, steps, map, vCard |
 | `/inspections` | ET / UT / MT / PT / VT plus published airframe work |
 | `/training` | Classroom courses (no stale fees) |
 | `/supplies` | QC NDT equipment, rentals, consumables |
-| `/about` | Combined shop story |
-| `/contact` | Dual phones + quote form (`?need=aog\|inspection\|training\|supplies`) |
+| `/about` | Combined shop story + FAA 145 / A003 PDFs |
+| `/contact` | 877, AOG email, supplies phone |
 
-## Quote form
+## AOG contact
 
-The quote form posts to `/api/quote` and stays on the page (no mailto). Submissions are written to `.data/quotes.json` locally. Set `FORM_ENDPOINT` (Formspree or similar) when the domain is live so the shop inbox gets a copy.
+- Phone `877-9AOG-NDT` — 24/7, a dispatcher answers
+- Email `AOGNDT@proton.me` (mailto prefilled with the dispatch checklist)
+- Planned mailbox `dispatch@aogndt.com` lives in `site.aog.emailNext` only — do not print it until that address is live
 
-Need still selects the target inbox:
-
-- AOG / inspection → `info@aircraftndt.com`
-- Training → `info@level3ndt.com`
-- Supplies → `sales@qcndt.net`
+Training still uses `info@level3ndt.com`. Scheduled inspections still use `info@aircraftndt.com`. Supplies: `sales@qcndt.net`.
 
 ## Later: domain
 
 1. Point DNS at the host (Vercel, Netlify, Cloudflare Pages, or static `output: "export"`).
 2. Flip `site.url` in `src/lib/site.ts` if the live hostname is not `aogndt.com`.
-3. Wire the form endpoint and add SSL.
+3. Add SSL.
 4. Optionally 301 the old brochure sites.
 
-See `CONFIRM_HOURS.md` before claiming 24/7 coverage.
+Hours decision is in `CONFIRM_HOURS.md`.

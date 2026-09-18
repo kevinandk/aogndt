@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePhoto } from "@/components/SitePhoto";
 import { qcCatalogNames, qcVendorSectors, site } from "@/lib/site";
@@ -136,12 +135,12 @@ export default function SuppliesPage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact?need=supplies"
-            className="bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase hover:bg-amber-400"
+          <a
+            href={site.qcndt.phoneHref}
+            className="bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
           >
-            Request supplies
-          </Link>
+            Call {site.qcndt.phone}
+          </a>
           <a
             href={site.qcndt.site.href}
             className="border border-navy-800/20 px-5 py-3 text-center font-display tracking-[0.1em] uppercase hover:border-amber-500"

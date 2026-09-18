@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePhoto } from "@/components/SitePhoto";
 import {
@@ -103,23 +102,16 @@ export default function InspectionsPage() {
             Schedule or dispatch
           </h2>
           <p className="mt-3 max-w-2xl text-steel">
-            AOG and field work: call {site.aog.phone}. Planned inspections: send
-            a quote with aircraft, location, and the instruction you are working
-            to.
+            AOG, field work, and planned inspections: call {site.aog.phone} with
+            aircraft, location, and the instruction you are working to.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6">
             <a
               href={site.aog.phoneHref}
-              className="bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase hover:bg-amber-400"
+              className="inline-block bg-amber-500 px-5 py-3 text-center font-display font-semibold tracking-[0.1em] text-navy-950 uppercase transition-colors duration-200 hover:bg-white"
             >
               Call {site.aog.phone}
             </a>
-            <Link
-              href="/contact?need=inspection"
-              className="border border-paper/30 px-5 py-3 text-center font-display tracking-[0.1em] uppercase hover:border-amber-400 hover:text-amber-400"
-            >
-              Request a quote
-            </Link>
           </div>
         </div>
       </section>
